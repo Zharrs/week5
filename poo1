@@ -1,0 +1,203 @@
+<?php
+require_once 'voiture.php';
+
+
+$Bicycle0 = new Bicycle("");
+
+var_dump($Bicycle0);
+echo '<br>';
+
+echo $Bicycle0->forward() . '<br>';
+
+
+echo '<br> Vitesse du vélo : ' . $Bicycle0->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $Bicycle0->brake() . '<br>';
+
+echo '<br> Vitesse du vélo : ' . $Bicycle0->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $Bicycle0->brake() . '<br>';
+
+$Bicycle1 = new newBicycle("red", 1 , 2, 15);
+
+var_dump($Bicycle1);
+echo '<br>';
+
+echo $Bicycle0->forward() . '<br>';
+
+echo '<br> Vitesse du vélo : ' . $Bicycle1->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $Bicycle1->brake() . '<br>';
+
+echo '<br> Vitesse du vélo : ' . $Bicycle1->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $Bicycle1->brake() . '<br>';
+
+
+
+$voiture0 = new voiture("red", 5 , 4, 25, "nuk", 100);
+
+var_dump($voiture0);
+echo '<br>';
+
+echo $voiture0->forward() ;
+
+echo '<br> Vitesse du voiture : ' . $voiture0->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $voiture0->run() .'<br>';
+
+echo '<br> Vitesse du voiture : ' . $voiture0->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $voiture0->brake() . '<br>';
+
+echo '<br> Vitesse du voiture : ' . $voiture0->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $voiture0->brake() . '<br>';
+
+=================================================================================================================================================================
+
+<?php
+
+class Bicycle
+{
+ 
+    private string $color;
+
+    private int $currentSpeed;
+
+    private int $nbSeats = 1;
+
+    private int $nbWheels = 2;
+
+    public function forward(): string
+    {
+        $this->currentSpeed = 15;
+    
+        return "Go !";
+    }
+    
+    public function brake(): string
+    {
+       $sentence = "";
+       while ($this->currentSpeed > 0) {
+           $this->currentSpeed--;
+           $sentence .= "Brake !!!";
+       }
+       $sentence .= "I'm stopped !";
+       return $sentence;
+    }
+
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): void
+    {
+        $this->color = $color;
+    }
+
+    public function getCurrentSpeed(): int
+    {
+        return $this->currentSpeed;
+    }
+
+    public function setCurrentSpeed(int $currentSpeed): void
+    {
+        if($currentSpeed >= 0) {
+         $this->currentSpeed = $currentSpeed;
+        }
+    }
+}
+
+class newBicycle
+{
+    public function __construct(string $color, int $nbSeats , int $nbWheels, int $currentSpeed )
+    {
+        $this->color = $color;
+        $this->nbSeats = $nbSeats;
+        $this->nbWheel = $nbWheels;
+        $this->currentSpeed = $currentSpeed;
+    }
+
+    public function forward(): string
+    {
+        $this->currentSpeed = 15;
+    
+        return "Go !";
+    }
+    
+    public function brake(): string
+    {
+       $sentence = "";
+       while ($this->currentSpeed > 0) {
+           $this->currentSpeed--;
+           $sentence .= "Brake !!!";
+       }
+       $sentence .= "I'm stopped !";
+       return $sentence;
+    }
+    public function getCurrentSpeed(): int
+    {
+        return $this->currentSpeed;
+    }
+
+    public function setCurrentSpeed(int $currentSpeed): void
+    {
+        if($currentSpeed >= 0) {
+         $this->currentSpeed = $currentSpeed;
+        }
+    }
+
+}
+
+class Voiture
+{
+    public function __construct(string $color, int $nbSeats , int $nbWheels, int $currentSpeed, string $typeEnergie, int $nbEnergie)
+    {
+        $this->color = $color;
+        $this->nbSeats = $nbSeats;
+        $this->nbWheel = $nbWheels;
+        $this->currentSpeed = $currentSpeed;
+        $this->typeEnergie = $typeEnergie;
+        $this->nbEnergie = $nbEnergie;
+    }
+
+    public function forward(): string
+    {
+        $this->currentSpeed = 15;
+    
+        return "Go !";
+    }
+    
+    public function run(): string
+    {
+        $this->currentSpeed = 25;
+    
+        return "Vroum !";
+    }
+
+    public function brake(): string
+    {
+       $sentence = "";
+       while ($this->currentSpeed > 0) {
+           $this->currentSpeed--;
+           $sentence .= "Brake !!!";
+       }
+       $sentence .= "I'm stopped !";
+       return $sentence;
+    }
+    public function getCurrentSpeed(): int
+    {
+        return $this->currentSpeed;
+    }
+
+    public function setCurrentSpeed(int $currentSpeed): void
+    {
+        if($currentSpeed >= 0) {
+         $this->currentSpeed = $currentSpeed;
+        }
+    }
+    
+}
+
